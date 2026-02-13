@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💝</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* Pink gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            z-index: 10;
+        }
+        h1 { color: #ff4757; }
+        .buttons { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        #yesBtn { background-color: #ff6b6b; color: white; }
+        #noBtn { background-color: #f1f2f6; color: #2f3542; position: absolute; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="question">Will you be my Valentine? ❤️</h1>
+        <div class="buttons">
+            <button class="btn" id="yesBtn" onclick="celebrate()">Yes</button>
+            <button class="btn" id="noBtn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
