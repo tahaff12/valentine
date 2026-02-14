@@ -1,57 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine? 💝</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* Pink gradient */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden;
-        }
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            z-index: 10;
-        }
-        h1 { color: #ff4757; }
-        .buttons { 
-            margin-top: 20px; 
-            display: flex; 
-            justify-content: center; 
-            gap: 20px; 
-        }
-        .btn {
-            padding: 10px 25px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
-        #yesBtn { background-color: #ff6b6b; color: white; }
-        #noBtn { 
-            background-color: #f1f2f6; 
-            color: #2f3542; 
-            position: relative; /* Change 'absolute' to 'relative' initially */
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1 id="question">Will you be my Valentine? ❤️</h1>
-        <div class="buttons">
-            <button class="btn" id="yesBtn" onclick="celebrate()">Yes</button>
-            <button class="btn" id="noBtn" onmouseover="moveButton()">No</button>
-        </div>
-    </div>
+<script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const question = document.getElementById('question');
 
+    // This makes the "No" button run away
+    function moveButton() {
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        
+        noBtn.style.position = 'absolute'; // This allows it to move
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+    }
+
+    // This triggers the celebration when they click "Yes"
+    function celebrate() {
+        question.innerHTML = "Yay! I knew you'd say Yes! 🥰🎉";
+        document.querySelector('.buttons').style.display = 'none';
+        createHearts();
+    }
+
+    function createHearts() {
+        for (let i = 0; i < 50; i++) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart-pop';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(heart);
+        }
+    }
+
+    // Add event listeners just in case the HTML attributes didn't catch
+    noBtn.addEventListener('mouseover', moveButton);
+    noBtn.addEventListener('touchstart', moveButton); // For mobile users!
+</script>
